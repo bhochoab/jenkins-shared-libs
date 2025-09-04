@@ -9,7 +9,7 @@ def call(Map config = [:]) {
             }
             stage('SonarQube Analysis') {
                 steps {
-                    withSonarQubeEnv('SonarQubeServer') {
+                    withSonarQubeEnv('POC-Sonar') {
                         sh """
                             sonar-scanner \
                               -Dsonar.projectKey=${config.projectKey} \
