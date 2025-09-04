@@ -10,8 +10,9 @@ def call(Map config = [:]) {
             stage('SonarQube Analysis') {
                 steps {
                     withSonarQubeEnv('POC-Sonar') {
+                        def scannerHome = tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                         sh """
-                            sonar-scanner \
+                            ${scannerHome}/bin/sonar-scanner \
                               -Dsonar.projectKey=${config.projectKey} \
                               -Dsonar.sources=. \
                               -Dsonar.host.url=http://sonarqube:9000 \
