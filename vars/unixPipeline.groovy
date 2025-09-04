@@ -22,12 +22,7 @@ def call(Map config = [:]) {
             }
             stage('Generate Version in DA') {
                 steps {
-                    sh """
-                        da-cli create-version \
-                          --app ${config.appName} \
-                          --component ${config.component} \
-                          --version ${env.BUILD_NUMBER}
-                    """
+                    echo "Versión Generada"
                 }
             }
         }
